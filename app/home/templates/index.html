@@ -1,0 +1,84 @@
+
+{% extends "layouts/base.html" %}
+
+{% block title %} Index {% endblock %} 
+
+<!-- Specific Plugin CSS goes HERE -->
+{% block plugin_stylesheets %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+{% endblock plugin_stylesheets %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="content-wrapper">
+
+            <div class="card">
+              <div class="col-12 grid-margin stretch-card">
+              <div class="card-body">
+                <h4 class="card-title">File upload</h4>
+                <p class="card-description"> Choose a file from your local system </p>
+                <form class="forms-sample" action = "/uploader" method = "POST" 
+                  enctype = "multipart/form-data">
+                  <div class="form-group">
+                    <input type="file" name="img[]" class="file-upload-default">
+                     <div class="input-group col-xs-12">
+                        <input class="file-upload-browse btn btn-primary" type = "file" name = "file" />
+                     </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                  <button class="btn btn-dark">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+  
+    
+<div class="content-wrapper">
+    <div class="card">
+      <div class="col-12 grid-margin stretch-card">
+      <div class="card-body">
+        <h4 class="card-title">Remove File</h4>
+        <form class="forms-sample" action = "/remove" method = "POST">
+          <div class="form-group">
+            <label for="FileSelect">Select File</label>
+            <select class="form-control" name="fileName" id="fileName">
+              {% for file in files %}
+              <option>{{ file }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <!--<input type="text" name="t1">-->
+          <button type="submit" class="btn btn-primary mr-2">Submit</button>
+          <button class="btn btn-dark">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<div class="content-wrapper">
+    <div class="card">
+      <div class="col-12 grid-margin stretch-card">
+      <div class="card-body">
+        <form class="forms-sample" action = "/" method = "POST"></form>
+          <button type="submit" class="btn btn-primary mr-2">Refresh Page</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>   
+-->
+{% endblock content %}
+
+<!-- Specific Plugin JS goes HERE  -->
+{% block plugin_javascripts %}{% endblock plugin_javascripts %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+{% endblock javascripts %}
