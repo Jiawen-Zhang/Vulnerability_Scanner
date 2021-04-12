@@ -1,0 +1,1 @@
+httpSetRoutePathVar(HttpRoute *route, cchar *key, cchar *value)\n{\n    mprAssert(route);\n    mprAssert(key);\n    mprAssert(value);\n\n    GRADUATE_HASH(route, pathTokens);\n    if (schr(value, '$')) {\n        value = stemplate(value, route->pathTokens);\n    }\n    mprAddKey(route->pathTokens, key, sclone(value));\n}
