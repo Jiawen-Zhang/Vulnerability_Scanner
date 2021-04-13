@@ -1,0 +1,1 @@
+eb_jabber_read_prefs_config(LList *values)\n{\n\tchar *c;\n\tc = value_pair_get_value(values, "server");\n\n\tif (c) {\n\t\tstrcpy(jabber_server, c);\n\t\tfree(c);\n\t}\n\tc = value_pair_get_value(values, "do_jabber_debug");\n\tif (c) {\n\t\tdo_jabber_debug = atoi(c);\n\t\tfree(c);\n\t}\n}
